@@ -5,26 +5,12 @@ A Pytorch implementation of CapsNet in the paper:
 
 Thanks for https://github.com/XifengGuo/CapsNet-Pytorch
  
-**Differences with the paper:**   
-- We use the learning rate decay with `decay factor = 0.9` and `step = 1 epoch`,    
-while the paper did not give the detailed parameters (or they didn't use it?).
-- We only report the test errors after `50 epochs` training.   
-In the paper, I suppose they trained for `1250 epochs` according to Figure A.1?
-- We use MSE (mean squared error) as the reconstruction loss and 
-the coefficient for the loss is `lam_recon=0.0005*784=0.392`.   
-This should be **equivalent** to using SSE (sum squared error) and `lam_recon=0.0005` as in the paper.
-
-
 **TODO**
 - Conduct experiments on other datasets. 
 - Explore interesting characteristics of CapsuleNet.
+- Test the reconstruction results on the EMNIST-letters
 
-**Contacts**
-- Your contributions to the repo are always welcome. 
-Open an issue or contact me with E-mail `guoxifeng1990@163.com` or WeChat `wenlong-guo`.
-
-
-## Usage
+## Usage: Same as the https://github.com/XifengGuo/CapsNet-Pytorch
 
 **Step 1.
 Install [Pytorch](https://github.com/pytorch/pytorch) from source**
@@ -65,64 +51,16 @@ You can also just *download a model I trained* from
 https://pan.baidu.com/s/1dFLFtT3
 
 
-## Results
-
-**Test Errors**   
-
-CapsNet classification test **error** on MNIST. Average and standard deviation results are
-reported by 3 trials. The results can be reproduced by launching the following commands.   
- ```
- python capsulenet.py --routings 1 #CapsNet-v1   
- python capsulenet.py --routings 3 #CapsNet-v2
-```
-   Method     |   Routing   |   Reconstruction  |  MNIST (%)  |  *Paper*    
-   :---------|:------:|:---:|:----:|:----:
-   Baseline |  -- | -- | --             | *0.39* 
-   CapsNet-v1  |  1 | yes | 0.36 (0.016)| *0.29 (0.011)*
-   CapsNet-v2  |  3 | yes| 0.34 (0.029) | *0.25 (0.005)*
-   
-Losses and accuracies:   
-![](result/log.png)
-
-
-**Training Speed**  
-
-About `73s / epoch` on a single GTX 1070 GPU.   
-About `43s / epoch` on a single GTX 1080Ti GPU.         
+## Results       
 
 **Reconstruction result**  
 
-The result of CapsNet-v2 by launching   
-```
-python capsulenet.py --testing --weights result/trained_model.pkl
-```
-Digits at top 5 rows are real images from MNIST and 
+Digits at top 5 rows are real images from EMNIST and 
 digits at bottom are corresponding reconstructed images.
 
+All the results are based on 5 epochs traing.
+Time for training is 480s/epoch on  GTX1060
+
+Results can showing by both one-channel and color
+
 ![](result/real_and_recon.png)![](result/real_and_recon_color.png)
-
-
-## Other Implementations
-- Keras:   
-  - [XifengGuo/CapsNet-Keras](https://github.com/XifengGuo/CapsNet-Keras)   
-  
-- TensorFlow:
-  - [naturomics/CapsNet-Tensorflow](https://github.com/naturomics/CapsNet-Tensorflow.git)   
-  I referred to some functions in this repository.
-  - [InnerPeace-Wu/CapsNet-tensorflow](https://github.com/InnerPeace-Wu/CapsNet-tensorflow)   
-  - [chrislybaer/capsules-tensorflow](https://github.com/chrislybaer/capsules-tensorflow)
-
-- PyTorch:
-  - [timomernick/pytorch-capsule](https://github.com/timomernick/pytorch-capsule)
-  - [gram-ai/capsule-networks](https://github.com/gram-ai/capsule-networks)
-  - [nishnik/CapsNet-PyTorch](https://github.com/nishnik/CapsNet-PyTorch.git)
-  - [leftthomas/CapsNet](https://github.com/leftthomas/CapsNet)
-  
-- MXNet:
-  - [AaronLeong/CapsNet_Mxnet](https://github.com/AaronLeong/CapsNet_Mxnet)
-  
-- Chainer:
-  - [soskek/dynamic_routing_between_capsules](https://github.com/soskek/dynamic_routing_between_capsules)
-
-- Matlab:
-  - [yechengxi/LightCapsNet](https://github.com/yechengxi/LightCapsNet)
