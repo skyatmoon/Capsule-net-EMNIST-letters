@@ -99,7 +99,7 @@ python capsulenet.py --testing --weights result/trained_model.pkl
 Digits at top 5 rows are real images from MNIST and 
 digits at bottom are corresponding reconstructed images.
 
-![](result/real_and_recon.png)
+![](result/real_and_recon.png)![](result/real_and_recon_color.png)
 
 
 ## Other Implementations
