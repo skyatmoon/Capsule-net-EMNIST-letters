@@ -1,9 +1,9 @@
-# CapsNet-Pytorch
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/XifengGuo/CapsNet-Keras/blob/master/LICENSE)
+# CapsNet-Pytorch-EMNIST-letters
 
 A Pytorch implementation of CapsNet in the paper:   
 [Sara Sabour, Nicholas Frosst, Geoffrey E Hinton. Dynamic Routing Between Capsules. NIPS 2017](https://arxiv.org/abs/1710.09829)   
-The current `average test error = 0.34%` and `best test error = 0.30%`.   
+
+Thanks for https://github.com/XifengGuo/CapsNet-Pytorch
  
 **Differences with the paper:**   
 - We use the learning rate decay with `decay factor = 0.9` and `step = 1 epoch`,    
